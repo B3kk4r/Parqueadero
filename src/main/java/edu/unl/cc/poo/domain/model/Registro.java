@@ -1,9 +1,12 @@
-package com.parqueadero.model;
+package edu.unl.cc.poo.domain.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -51,8 +54,6 @@ public class Registro {
     }
 
     /**
-     * Registra la salida del vehículo, calcula duración y total.
-     *
      * @param tarifa Tarifa aplicable según el tipo de vehículo.
      */
 

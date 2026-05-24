@@ -1,6 +1,6 @@
-package com.parqueadero.model;
+package edu.unl.cc.poo.domain.model;
 
-import com.parqueadero.enums.TipoVehiculo;
+import edu.unl.cc.poo.domain.enums.TipoVehiculo;
 
 /**
  * Define el costo por hora para un tipo de vehículo
@@ -22,9 +22,7 @@ public class Tarifa {
 
     /**
      * Calcula el costo según los minutos de permanencia.
-     * El cobro se redondea hacia arriba a la siguiente fracción.
-     *
-     * @param minutos Duración real en minutos.
+     * @param minutos, Duración real en minutos.
      * @return Costo total a cobrar.
      */
     public double calcularCosto(long minutos) {

@@ -1,7 +1,10 @@
-package com.parqueadero.model;
+package edu.unl.cc.poo.domain.model;
 
-import com.parqueadero.enums.EstadoEspacio;
+import edu.unl.cc.poo.domain.enums.EstadoEspacio;
 
+/**
+ * Representa el actuar del parqueadero de manera general.
+ */
 
 public class Parqueadero {
 
@@ -15,30 +18,26 @@ public class Parqueadero {
             throw new IllegalArgumentException("El nombre no puede estar vacío.");
         this.configuracion = new Configuracion();
         this.configuracion.setNombreParqueadero(nombre);
-        this.nombre     = nombre;
-        this.mapa       = new MapaParqueadero(filas, columnas);
-        this.capacidad  = filas * columnas;
+        this.nombre = nombre;
+        this.mapa = new MapaParqueadero(filas, columnas);
+        this.capacidad = filas * columnas;
     }
 
-    /** Constructor que carga la configuración desde archivo. */
     public Parqueadero() {
         this.configuracion = new Configuracion();
         this.configuracion.cargarConfiguracion();
-        this.nombre    = configuracion.getNombreParqueadero();
-        this.mapa      = new MapaParqueadero(configuracion.getFilasDefecto(),
-                                              configuracion.getColumnasDefecto());
+        this.nombre = configuracion.getNombreParqueadero();
+        this.mapa = new MapaParqueadero(configuracion.getFilasDefecto(),
+                configuracion.getColumnasDefecto());
         this.capacidad = configuracion.getFilasDefecto() * configuracion.getColumnasDefecto();
     }
 
 
     /**
-     * Registra la entrada de un vehículo y ocupa el primer espacio libre.
-     *
-     * @param vehiculo Vehículo que ingresa.
+     * @param vehiculo, Vehículo que ingresa.
      * @return El registro creado.
-     * @throws IllegalStateException si no hay espacios disponibles.
+     * @throws IllegalStateException, si no hay espacios disponibles.
      */
-
     public Registro registrarEntrada(Vehiculo vehiculo) {
         EspacioParqueadero espacio = mapa.getPrimerEspacioLibre();
         if (espacio == null)
@@ -54,9 +53,6 @@ public class Parqueadero {
 
     }
 
-    /**
-     * Registra la entrada en un espacio específico (por etiqueta, ej. "A-01").
-     */
 
     public Registro registrarEntradaEnEspacio(Vehiculo vehiculo, int fila, int columna) {
         EspacioParqueadero espacio = mapa.getEspacio(fila, columna);
@@ -73,9 +69,7 @@ public class Parqueadero {
     }
 
     /**
-     * Registra la salida de un vehículo, calcula el cobro y libera el espacio.
-     *
-     * @param registroId ID del registro de entrada.
+     * @param registroId, ID del registro de entrada.
      * @return El registro actualizado con datos de salida.
      */
 
@@ -94,10 +88,6 @@ public class Parqueadero {
                 registro.getTotalCobrado());
         return registro;
     }
-
-    /**
-     * Inhabilita o habilita un espacio del mapa.
-     */
 
     public void setEstadoEspacio(int fila, int columna, EstadoEspacio estado) {
         EspacioParqueadero espacio = mapa.getEspacio(fila, columna);
@@ -130,7 +120,6 @@ public class Parqueadero {
                 configuracion.getMoneda(), Registro.getTotalRecaudado());
         System.out.println("=".repeat(50));
     }
-
 
     public String          getNombre()        { return nombre; }
     public int             getCapacidad()     { return capacidad; }

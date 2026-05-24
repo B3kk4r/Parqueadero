@@ -1,6 +1,6 @@
-package com.parqueadero.model;
+package edu.unl.cc.poo.domain.model;
 
-import com.parqueadero.enums.TipoVehiculo;
+import edu.unl.cc.poo.domain.enums.TipoVehiculo;
 
 /**
  * Representa un vehículo que ingresa al parqueadero.
@@ -18,7 +18,6 @@ public class Vehiculo {
         this.tipo = tipo;
         this.nombreConductor = nombreConductor;
     }
-
 
     public String getPlaca() {
         return placa;

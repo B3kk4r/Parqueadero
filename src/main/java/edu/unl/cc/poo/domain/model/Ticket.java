@@ -1,13 +1,14 @@
-package com.parqueadero.model;
+package edu.unl.cc.poo.domain.model;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
  * Genera el comprobante de pago de un registro de parqueadero.
- * Actualmente produce un ticket en formato .txt; la generación de PDF
- * requiere una librería externa (iText, Apache PDFBox, etc.).
  */
 
 public class Ticket {
@@ -60,7 +61,6 @@ public class Ticket {
 
     /**
      * Genera el ticket como archivo .txt
-     * Reemplazar el cuerpo por iText/PDFBox para PDF real.
      */
 
     public File generarPDF() {
@@ -77,7 +77,6 @@ public class Ticket {
         return archivo;
     }
 
-    /** Abre el ticket con el visor predeterminado del sistema operativo. */
 
     public void abrirPDF() {
         if (rutaArchivoPDF == null || rutaArchivoPDF.isBlank()) throw new IllegalArgumentException("No hay ticket generado. Llame primero a generarPDF().");
@@ -88,7 +87,6 @@ public class Ticket {
             System.err.println("No se pudo abrir el ticket: " + e.getMessage());
         }
     }
-
 
     private String centrar(String texto, int ancho) {
         if (texto.length() >= ancho) return texto;

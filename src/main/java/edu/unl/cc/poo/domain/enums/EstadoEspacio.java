@@ -1,4 +1,4 @@
-package com.parqueadero.enums;
+package edu.unl.cc.poo.domain.enums;
 
 public enum EstadoEspacio {
     LIBRE("Libre"),
